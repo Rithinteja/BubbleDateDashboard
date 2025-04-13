@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { updatePassword } from 'firebase/auth';
 
 export default function Settings() {
   const [newPassword, setNewPassword] = useState('');
@@ -24,8 +25,14 @@ export default function Settings() {
       setError('');
       setSuccess('');
       setLoading(true);
-      // Here you would implement the password change logic using Firebase
-      setSuccess('Password updated successfully');
+      if (auth?.user) {
+        await updatePassword(auth.user, newPassword);
+        setSuccess('Password updated successfully');
+        setNewPassword('');
+        setConfirmPassword('');
+      } else {
+        setError('Please log in again before changing your password');
+      }
     } catch (error) {
       setError('Failed to update password');
     }

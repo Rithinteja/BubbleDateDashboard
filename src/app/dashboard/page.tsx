@@ -12,7 +12,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { useAuth } from 'contexts\AuthContext.tsx';
+import { useAuth } from '../../contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
 ChartJS.register(
