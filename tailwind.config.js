@@ -10,8 +10,16 @@ module.exports = {
       colors: {
         background: '#ffffff',
         foreground: '#000000',
+        'bubble-pink': '#FF69B4',
+        'bubble-purple': '#9932CC',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 } 
